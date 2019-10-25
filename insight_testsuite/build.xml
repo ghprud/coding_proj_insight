@@ -1,0 +1,21 @@
+<project>
+  <target name="compile">
+    <mkdir dir="build/classes"/>
+    <javac srcdir="./tests" destdir="./build/classes">
+    <classpath>
+        <pathelement path="../src/libs/junit-4.10.jar"/>
+        <pathelement path="../build/classes"/>
+    </classpath>
+    </javac>
+  </target>
+
+  <target name="runtests">
+    <java classname = "TestJUnitRunner">
+      <classpath>
+          <pathelement path="./build/classes"/>
+          <pathelement path="../build/classes"/>
+          <pathelement path="../src/libs/junit-4.10.jar"/>
+      </classpath>
+    </java>
+  </target>
+</project>

@@ -1,0 +1,20 @@
+<project>
+
+    <target name="compile">
+        <mkdir dir="../build/classes"/>
+        <javac srcdir="." destdir="../build/classes">
+        <classpath>
+            <pathelement path="./libs/junit-4.10.jar"/>
+        </classpath>
+        </javac>
+    </target>
+
+    <target name="run">
+      <java classname = "insight.Insight">
+        <classpath>
+            <pathelement path="../build/classes"/>
+        </classpath>
+      </java>
+    </target>
+
+</project>
