@@ -98,9 +98,7 @@ public class DataProcessingUtils {
       }
 
       //System.out.println(mapBorderCrossingData.toString());
-
       return mapBorderCrossingData;
-
   }
 
   public ArrayList<FinalOutput> getListToSort(HashMap<BorderCrossingDataKey, BorderCrossingComputedData> mapBorderCrossingData){
@@ -120,7 +118,6 @@ public class DataProcessingUtils {
 
         finalList.add(finalOP);
     }
-
     return finalList;
   }
 

@@ -3,19 +3,26 @@ import static org.junit.Assert.assertEquals;
 
 import insight.DataProcessingUtils;
 import insight.Constants;
+import insight.BorderCrossingDataKey;
+import insight.BorderCrossingComputedData;
+
+import java.util.HashMap;
+
+
 
 public class TestJunit2 {
    @Test
    public void testInput2() {
 
-      DataProcessingUtils dataProcessingUtils = new DataProcessingUtils();
+	DataProcessingUtils dataProcessingUtils = new DataProcessingUtils();
+	String testFileInputTwo = "./tests/test_2/input/test_data_2.csv";
+	String testFileOutputTwo = "./tests/test_2/output/final_output.txt";
 
-      String testFileInput = "./tests/test_2/input/test_data_2.txt";
-      String testFileOutput = "./tests/test_2/output/report.txt";
-      dataProcessingUtils.writeTotalDrugCost(
-        dataProcessingUtils.fillDrugDataCache
-          ( testFileInput),
-            testFileOutput
-          );
+
+	HashMap<BorderCrossingDataKey, BorderCrossingComputedData> finalOutput =
+	  dataProcessingUtils.calcTotalCrossings(testFileInputTwo);
+
+	dataProcessingUtils.writeFinalOutpout(finalOutput, testFileInputTwo);
+    
    }
 }
