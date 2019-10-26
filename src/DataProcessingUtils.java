@@ -6,22 +6,15 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.PriorityQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,9 +53,7 @@ public class DataProcessingUtils {
     }
     
     public HashMap<BorderCrossingDataKey, BorderCrossingComputedData> calcTotalCrossings(String fileInput ){
-      HashMap<BorderCrossingDataKey, BorderCrossingComputedData> mapBorderCrossingData = new HashMap<>();
-      //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
-      
+      HashMap<BorderCrossingDataKey, BorderCrossingComputedData> mapBorderCrossingData = new HashMap<>();      
       // read the file
       BufferedReader dataReader = null;
       try {
