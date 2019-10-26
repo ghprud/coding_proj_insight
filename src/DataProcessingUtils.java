@@ -24,94 +24,93 @@ import java.util.stream.Collectors;
  */
 public class DataProcessingUtils {
     
-    public DataProcessingUtils(){
-        
-    }
-    
-    public BorderCrossingDataKey getBorderDataKey(String border, String crossedDate,
-            String source){
-        BorderCrossingDataKey borderCrossingData = null;new BorderCrossingDataKey();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
-        
-        boolean isEmpty = false;
-        
-        if (border.isEmpty() || crossedDate.isEmpty() || source.isEmpty()){
-            isEmpty = true;
-        }
-        
-        // consider the missing values...
-        // If any of the border, or the date or the source is missing(empty)
-        // the data is incomplete and do not include in the calculations
-        // do not include the row data in the hash map.
-        if (!isEmpty){      
-            borderCrossingData = new BorderCrossingDataKey();
-            borderCrossingData.setBorder(border);
-            borderCrossingData.setCrossedDate(LocalDateTime.parse(crossedDate, formatter));
-            borderCrossingData.setSource(source);         
-        }      
-        return borderCrossingData;
-    }
-    
-    public HashMap<BorderCrossingDataKey, BorderCrossingComputedData> calcTotalCrossings(String fileInput ){
-      HashMap<BorderCrossingDataKey, BorderCrossingComputedData> mapBorderCrossingData = new HashMap<>();      
-      // read the file
-      BufferedReader dataReader = null;
-      try {
-          String line = null;
-          Integer count = 0;
-
-          // for file operations
-          dataReader = new BufferedReader(new FileReader(fileInput));
-          BorderCrossingDataKey borderCrossingData = null;
-          BorderCrossingComputedData borderCrossingComputedData = null;
-          
-          Long totalCrossings = new Long(0);
-
-          while((line = dataReader.readLine()) != null){
-              String[] tempLineData = line.split(",");
-              count++;
-
-              if (count > 1){
-                  //borderCrossingData = new BorderCrossingDataKey();
-                  
-                  //what can go wrong in parsing??
-                  
-                  // combination of border, date and travel source
-                  // example: US-Canada Border + 03/01/2019 + Truck Containers Full
-                  borderCrossingData = getBorderDataKey(tempLineData[3], tempLineData[4], 
-                          tempLineData[5]);
-                  
-                  if (borderCrossingData != null){
-                    if (mapBorderCrossingData.get(borderCrossingData) == null){
-                        Long noOfCrossings = Long.parseLong(tempLineData[6]);
-
-                        borderCrossingComputedData = new BorderCrossingComputedData(noOfCrossings, new Long(0));
-                        mapBorderCrossingData.put(borderCrossingData, borderCrossingComputedData);
-                      }else{
-                          borderCrossingComputedData = mapBorderCrossingData.get(borderCrossingData);
-
-
-                          totalCrossings = borderCrossingComputedData.getValue() + Long.parseLong(tempLineData[6]);
-                          borderCrossingComputedData.setValue(totalCrossings);
-                          mapBorderCrossingData.put(borderCrossingData, borderCrossingComputedData);
-
-                      }
-                  }
-                  
-              }
-          }
-      } catch (IOException ex) {
-          Logger.getLogger(DataProcessingUtils.class.getName()).log(Level.SEVERE, null, ex);
-      }finally {
-          try {
-              dataReader.close();
-
-          } catch (IOException ex) {
-              Logger.getLogger(DataProcessingUtils.class.getName()).log(Level.SEVERE, null, ex);
-          }
-      }      
-      return mapBorderCrossingData;
+  public DataProcessingUtils(){
       
+  }
+    
+  public BorderCrossingDataKey getBorderDataKey(String border, String crossedDate,
+          String source){
+      BorderCrossingDataKey borderCrossingData = null;new BorderCrossingDataKey();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+      
+      boolean isEmpty = false;
+      
+      if (border.isEmpty() || crossedDate.isEmpty() || source.isEmpty()){
+          isEmpty = true;
+      }
+      
+      // consider the missing values...
+      // If any of the border, or the date or the source is missing(empty)
+      // the data is incomplete and do not include in the calculations
+      // do not include the row data in the hash map.
+      if (!isEmpty){      
+          borderCrossingData = new BorderCrossingDataKey();
+          borderCrossingData.setBorder(border);
+          borderCrossingData.setCrossedDate(LocalDateTime.parse(crossedDate, formatter));
+          borderCrossingData.setSource(source);         
+      }      
+      return borderCrossingData;
+  }
+    
+  public HashMap<BorderCrossingDataKey, BorderCrossingComputedData> calcTotalCrossings(String fileInput ){
+    HashMap<BorderCrossingDataKey, BorderCrossingComputedData> mapBorderCrossingData = new HashMap<>();      
+    // read the file
+    BufferedReader dataReader = null;
+    try {
+        String line = null;
+        Integer count = 0;
+
+        // for file operations
+        dataReader = new BufferedReader(new FileReader(fileInput));
+        BorderCrossingDataKey borderCrossingData = null;
+        BorderCrossingComputedData borderCrossingComputedData = null;
+        
+        Long totalCrossings = new Long(0);
+
+        while((line = dataReader.readLine()) != null){
+            String[] tempLineData = line.split(",");
+            count++;
+
+            if (count > 1){
+                //borderCrossingData = new BorderCrossingDataKey();
+                
+                //what can go wrong in parsing??
+                
+                // combination of border, date and travel source
+                // example: US-Canada Border + 03/01/2019 + Truck Containers Full
+                borderCrossingData = getBorderDataKey(tempLineData[3], tempLineData[4], 
+                        tempLineData[5]);
+                
+                if (borderCrossingData != null){
+                  if (mapBorderCrossingData.get(borderCrossingData) == null){
+                      Long noOfCrossings = Long.parseLong(tempLineData[6]);
+
+                      borderCrossingComputedData = new BorderCrossingComputedData(noOfCrossings, new Long(0));
+                      mapBorderCrossingData.put(borderCrossingData, borderCrossingComputedData);
+                    }else{
+                        borderCrossingComputedData = mapBorderCrossingData.get(borderCrossingData);
+
+
+                        totalCrossings = borderCrossingComputedData.getValue() + Long.parseLong(tempLineData[6]);
+                        borderCrossingComputedData.setValue(totalCrossings);
+                        mapBorderCrossingData.put(borderCrossingData, borderCrossingComputedData);
+
+                    }
+                }
+                
+            }
+        }
+    } catch (IOException ex) {
+        Logger.getLogger(DataProcessingUtils.class.getName()).log(Level.SEVERE, null, ex);
+    }finally {
+        try {
+            dataReader.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(DataProcessingUtils.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }      
+    return mapBorderCrossingData;
   }
     
   private ArrayList<FinalOutput> getListToSort(HashMap<BorderCrossingDataKey, BorderCrossingComputedData> mapBorderCrossingData){
@@ -229,4 +228,4 @@ public class DataProcessingUtils {
       }  
             
   }
-  }
+}
