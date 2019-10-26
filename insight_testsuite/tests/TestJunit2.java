@@ -22,7 +22,7 @@ public class TestJunit2 {
 	HashMap<BorderCrossingDataKey, BorderCrossingComputedData> finalOutput =
 	  dataProcessingUtils.calcTotalCrossings(testFileInputTwo);
 
-	dataProcessingUtils.writeFinalOutpout(finalOutput, testFileInputTwo);
+	dataProcessingUtils.writeFinalOutpout(finalOutput, testFileOutputTwo);
     
    }
 }
