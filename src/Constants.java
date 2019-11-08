@@ -5,8 +5,8 @@ package insight;
  * @author pg
  */
 public class Constants {
-  public static final String fileInputOne = "../input/test_data.csv";
-  public static final String fileOutputOne = "../output/final_output.txt";
+  public static final String fileInputOne = "../input/Border_Crossing_Entry_Data.csv";
+  public static final String fileOutputOne = "../output/report.csv";
 
   // for unit tests
   public static final String testFileInputOne = "./tests/test_1/input/test_data_1.csv";
