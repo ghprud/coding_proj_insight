@@ -9,10 +9,24 @@ public class Insight {
   public static void main(String[] args) {
       DataProcessingUtils dataProcessingUtils = new DataProcessingUtils();
 
-      HashMap<BorderCrossingDataKey, BorderCrossingComputedData> finalOutput =
-              dataProcessingUtils.calcTotalCrossings(Constants.fileInputOne);
+      String output = null;
+      String input = null;
 
-      dataProcessingUtils.writeFinalOutpout(finalOutput, Constants.fileOutputOne);
+      if (args.length == 0){
+        // default output
+        output = Constants.fileOutputOne;
+        input = Constants.fileInputOne;
+      }else if (args.length == 2){
+        output = args[1];
+        input = args[0];
+      }else{
+        System.out.println("not the right number of arguments");
+      }
+
+      HashMap<BorderCrossingDataKey, BorderCrossingComputedData> finalOutput =
+              dataProcessingUtils.calcTotalCrossings(input);
+
+      dataProcessingUtils.writeFinalOutpout(finalOutput, output);
 
 
   }
