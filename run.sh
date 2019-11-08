@@ -7,7 +7,7 @@ cd ..
 
 pwd
 
-ls -ltr
+ls 
 cd insight_testsuite
 pwd
 echo "..........running unit tests...."
