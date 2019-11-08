@@ -3,6 +3,10 @@ echo "...compiling and running the test files....."
 ./run_src.sh
 
 pwd
-cd ../insight_testsuite
+cd ..
+
+pwd
+cd insight_testsuite
+pwd
 echo "..........running unit tests...."
 ./run_tests.sh
