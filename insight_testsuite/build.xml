@@ -3,7 +3,7 @@
     <mkdir dir="build/classes"/>
     <javac srcdir="./tests" destdir="./build/classes">
     <classpath>
-        <pathelement path="../src/libs/junit-4.10.jar"/>
+        <pathelement path="./libs/junit-4.10.jar"/>
         <pathelement path="../build/classes"/>
     </classpath>
     </javac>
@@ -14,7 +14,7 @@
       <classpath>
           <pathelement path="./build/classes"/>
           <pathelement path="../build/classes"/>
-          <pathelement path="../src/libs/junit-4.10.jar"/>
+          <pathelement path="./libs/junit-4.10.jar"/>
       </classpath>
     </java>
   </target>
