@@ -2,10 +2,17 @@
 
 echo " run the tests"
 
+echo "test 1"
+java -jar insight.jar insight.Insight ./tests/test_1/input/Border_Crossing_Entry_Data.csv ./tests/test_1/output/report.csv
+
 echo "test 2"
 java -jar insight.jar insight.Insight ./tests/test_2/input/Border_Crossing_Entry_Data.csv ./tests/test_2/output/report.csv
 
-rm -rf ./temp
+echo "test 3"
+java -jar insight.jar insight.Insight ./tests/test_3/input/Border_Crossing_Entry_Data.csv ./tests/test_3/output/report.csv
+
+echo "test 4"
+java -jar insight.jar insight.Insight ./tests/test_4/input/Border_Crossing_Entry_Data.csv ./tests/test_4/output/report.csv
 
 declare -r color_start="\033["
 declare -r color_red="${color_start}0;31m"
