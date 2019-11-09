@@ -17,4 +17,13 @@
       </java>
     </target>
 
+    <target name="buildjar">
+    <jar destfile="insight.jar">
+      <fileset dir="../build/classes"/>
+      <manifest>
+        <attribute name="Main-Class" value="insight.Insight"/>
+      </manifest>
+    </jar>
+  </target>
+
 </project>

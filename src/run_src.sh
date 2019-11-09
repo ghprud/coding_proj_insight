@@ -9,3 +9,6 @@ echo $JAVA_HOME
 
 ant compile
 ant run
+
+#echo "building jar"
+#ant buildjar

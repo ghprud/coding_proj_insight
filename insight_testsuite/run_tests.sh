@@ -1,4 +1,12 @@
 #!/bin/bash
+
+echo " run the tests"
+
+echo "test 2"
+java -jar insight.jar insight.Insight ./tests/test_2/input/Border_Crossing_Entry_Data.csv ./tests/test_2/output/report.csv
+
+rm -rf ./temp
+
 declare -r color_start="\033["
 declare -r color_red="${color_start}0;31m"
 declare -r color_green="${color_start}0;32m"

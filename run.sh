@@ -3,7 +3,9 @@ echo "...compiling and running the test files....."
 ./run_src.sh
 
 #pwd
-#cd ..
+cd ..
+
+rm -rf build/
 
 #pwd
 

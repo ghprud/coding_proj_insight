@@ -12,13 +12,15 @@ public class Insight {
       String output = null;
       String input = null;
 
+      System.out.println("the number of arguments --> " + args.length);
+
       if (args.length == 0){
         // default output
         output = Constants.fileOutputOne;
         input = Constants.fileInputOne;
-      }else if (args.length == 2){
-        output = args[1];
-        input = args[0];
+      }else if (args.length == 3){
+        output = args[2];
+        input = args[1];
       }else{
         System.out.println("not the right number of arguments");
       }
